@@ -3,6 +3,7 @@ import logo from '../assets/logo.png'
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import Banner from './Banner';
 
 const Navbar = () => {
     const { user, logOut } = use(AuthContext)
@@ -25,7 +26,7 @@ const Navbar = () => {
                 </div>
                 <div className='text-[#a4b7a6] space-x-5'>
                     <NavLink to={'/'}>Home</NavLink>
-                    <NavLink>All Crops</NavLink>
+                    <NavLink to={'/all-crops'}>All Crops</NavLink>
                     <NavLink to={'/login'}>Login</NavLink>
                     <NavLink to={'/register'}>Register</NavLink>
                     {

@@ -8,9 +8,10 @@ const MainLayout = () => {
         <div>
             <header>
                 <Navbar></Navbar>
-                <Banner />
             </header>
-            <Outlet></Outlet>
+            <section>
+                <Outlet></Outlet>
+            </section>
         </div>
     );
 };
