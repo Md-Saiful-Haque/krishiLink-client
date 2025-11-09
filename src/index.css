@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.momo-font {
+  font-family: "Momo Signature", cursive;
+}
