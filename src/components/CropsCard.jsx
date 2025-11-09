@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const CropsCard = ({ crop }) => {
-    console.log(crop)
+    //console.log(crop)
     return (
         <div className='bg-[#FFFFFF] shadow-md p-3 rounded-md'>
             <div>
