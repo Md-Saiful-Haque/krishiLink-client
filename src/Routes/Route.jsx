@@ -4,6 +4,9 @@ import Home from "../Pages/Home";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import AllCrops from "../Pages/AllCrops";
+import PrivateRoute from "../context/PrivateRoute";
+import AddCrops from "../Pages/AddCrops";
+import MyPost from "../Pages/MyPost";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +29,18 @@ export const router = createBrowserRouter([
                 path: '/all-crops',
                 element: <AllCrops />,
                 loader: () => fetch('http://localhost:3000/crop')
+            },
+            {
+                path: '/addCrop',
+                element: <PrivateRoute>
+                    <AddCrops />
+                </PrivateRoute>
+            },
+            {
+                path: '/my-post',
+                element: <PrivateRoute>
+                    <MyPost></MyPost>
+                </PrivateRoute>
             }
         ]
     },

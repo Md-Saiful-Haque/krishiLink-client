@@ -32,8 +32,8 @@ const Navbar = () => {
                     {
                         user && <>
                             <NavLink>Profile</NavLink>
-                            <NavLink>Add crops</NavLink>
-                            <NavLink>My posts</NavLink>
+                            <NavLink to={'/addCrop'}>Add crops</NavLink>
+                            <NavLink to={'/my-post'}>My posts</NavLink>
                             <NavLink>My interests</NavLink>
                         </>
 
