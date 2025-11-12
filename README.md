@@ -1,16 +1,15 @@
-# React + Vite
+# 🌾 Krishi - Farmer’s Growth & Connection Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Krishi** is a modern social agro-network web application designed to connect farmers, traders, and consumers in one digital platform. Unlike traditional e-commerce sites, KrishiLink focuses on **connection, collaboration, and transparency** among all agricultural stakeholders.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Key Features
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🧑‍🌾 **Farmer-Friendly Posting:** Users can post details about crops they are growing or selling.
+- 🔍 **Search & Browse:** Browse and search through crops by type or name with instant filtering.
+- ❤️ **Interest Requests:** Users can send and manage interest requests for crops they wish to buy.
+- 👥 **Profile & Post Management:** Logged-in users can edit their profiles, add/edit/delete their posts, and track their interests.
+- 🔐 **Authentication:** Secure login and registration with Firebase (Email/Password & Google Sign-In).
+- 📱 **Responsive Design:** Fully optimized for mobile, tablet, and desktop devices.
+- ⚙️ **Dynamic Data:** Built using MongoDB, Express, React, and Node.js (MERN stack).
