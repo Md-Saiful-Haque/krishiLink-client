@@ -1,11 +1,16 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { FaEye } from 'react-icons/fa';
+import { IoEyeOff } from 'react-icons/io5';
 
 const Login = () => {
-    const {signIn, setUser, setLoading} = use(AuthContext)
+    const [show, setShow] = useState(false);
+    const {signIn, setUser, setLoading, signWithGoogle} = use(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -18,12 +23,24 @@ const Login = () => {
             setUser(res.user)
             toast.success('SignIn Successfully')
             setLoading(false)
-            console.log(res.user)
         })
         .catch(err => {
             toast.error(err.message)
         })
     }
+
+    const handleGoogleSignIn = () => {
+            signWithGoogle()
+                .then(res => {
+                    setUser(res.user)
+                    toast.success('Register Successfully')
+                    setLoading(false)
+                    navigate(`${location.state ? location.state : '/'}`)
+                })
+                .catch(err => {
+                    toast(err.message)
+                })
+        }
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-[#6d8c54] py-12">
@@ -34,7 +51,7 @@ const Login = () => {
                 </h2>
 
                 {/* Sign up with Google Button */}
-                <button className="w-full flex items-center gap-1.5 justify-center border border-gray-300 rounded-lg py-2.5 text-gray-700 hover:bg-gray-50 transition duration-150 mb-6">
+                <button onClick={handleGoogleSignIn} className="w-full flex items-center gap-1.5 justify-center border border-gray-300 rounded-lg py-2.5 text-gray-700 hover:bg-gray-50 transition duration-150 mb-6">
                     <FcGoogle size={24} />
                     <span className="font-semibold text-sm">Sign up with Google</span>
                 </button>
@@ -53,15 +70,15 @@ const Login = () => {
                     {/* Password Field */}
                     <div className="relative">
                         <input
-                            type="password"
+                            type={show ? "text" : "password"}
                             name='password'
                             placeholder="Password*"
                             required
                             className="w-full px-4 py-3 border-b border-gray-300 focus:border-green-500 focus:ring-0 outline-none text-gray-700 placeholder-gray-500 pr-10 transition duration-150 font-medium"
                         />
                         {/* Eye icon - use a proper React icon library (like lucide-react) for production */}
-                        <span className="absolute right-0 top-1/2 transform -translate-y-1/2 p-3 text-gray-500 cursor-pointer text-xl">
-                            &#x1F441;
+                        <span onClick={() => setShow(!show)} className="absolute right-0 top-1/2 transform -translate-y-1/2 p-3 text-gray-500 cursor-pointer text-xl">
+                            {show ? <FaEye size={25} /> : <IoEyeOff size={25} />}
                         </span>
                     </div>
                     <div><a className="link link-hover">Forgot password?</a></div>

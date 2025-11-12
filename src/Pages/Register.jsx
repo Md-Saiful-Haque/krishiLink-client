@@ -1,13 +1,14 @@
 import React, { use, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../context/AuthContext';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 
 const Register = () => {
-    const { createUser, setUser, updateUser, setLoading } = use(AuthContext)
+    const { createUser, setUser, updateUser, setLoading, signWithGoogle } = use(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
+    const location = useLocation()
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -45,12 +46,25 @@ const Register = () => {
                     .catch(err => {
                         toast(err.message)
                     })
-                    navigate('/')
+                    navigate(`${location.state ? location.state : '/'}`)
                 })
                 .catch(error => {
                     toast.error(error.message)
                 })
 
+    }
+
+    const handleGoogleSignIn = () => {
+        signWithGoogle()
+            .then(res => {
+                setUser(res.user)
+                toast.success('Register Successfully')
+                setLoading(false)
+                navigate(`${location.state ? location.state : '/'}`)
+            })
+            .catch(err => {
+                toast(err.message)
+            })
     }
 
 
@@ -63,7 +77,7 @@ const Register = () => {
                 </h2>
 
                 {/* Sign up with Google Button */}
-                <button className="w-full flex items-center gap-1.5 justify-center border border-gray-300 rounded-lg py-2.5 text-gray-700 hover:bg-gray-50 transition duration-150 mb-6">
+                <button onClick={handleGoogleSignIn} className="w-full flex items-center gap-1.5 justify-center border border-gray-300 rounded-lg py-2.5 text-gray-700 hover:bg-gray-50 transition duration-150 mb-6">
                     <FcGoogle size={24} />
                     <span className="font-semibold text-sm">Sign up with Google</span>
                 </button>
