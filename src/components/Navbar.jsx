@@ -31,7 +31,7 @@ const Navbar = () => {
                     <NavLink to={'/register'}>Register</NavLink>
                     {
                         user && <>
-                            <NavLink>Profile</NavLink>
+                            <NavLink to={'/profile'}>Profile</NavLink>
                             <NavLink to={'/addCrop'}>Add crops</NavLink>
                             <NavLink to={'/my-post'}>My posts</NavLink>
                             <NavLink>My interests</NavLink>

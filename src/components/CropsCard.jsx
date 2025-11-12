@@ -19,7 +19,7 @@ const CropsCard = ({ crop }) => {
             </div>
 
             <div className='mt-3'>
-                <Link to={`/productsDetails/${crop._id}`}><button className='btn bg-[#f1cf69] text-[#334b35] w-full font-semibold'>View Details</button></Link>
+                <Link to={`/details/${crop._id}`}><button className='btn bg-[#f1cf69] text-[#334b35] w-full font-semibold'>View Details</button></Link>
             </div>
         </div>
     );

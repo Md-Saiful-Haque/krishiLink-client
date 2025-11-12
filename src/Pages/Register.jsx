@@ -1,26 +1,55 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../context/AuthContext';
+import { Link, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const Register = () => {
-    const { createUser, setUser } = use(AuthContext)
+    const { createUser, setUser, updateUser, setLoading } = use(AuthContext)
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
 
     const handleSignUp = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
+        const displayName = e.target.name.value;
         const email = e.target.email.value;
         const photoURL = e.target.photoURL.value;
         const password = e.target.password.value;
+        //console.log(name, email, photoURL, password)
+        const uppercase = /[A-Z]/;
+        const lowercase = /[a-z]/;
 
-        console.log(name, email, photoURL, password)
-        createUser(email, password)
-        .then(res => {
-            setUser(res.user)
-            console.log(res.user)
-        })
-        .catch(err => {
-            console.log(err.message)
-        })
+        if(!uppercase.test(password)) {
+            setError('Password at least one uppercase latter')
+            return
+        }
+
+        if(!lowercase.test(password)) {
+            setError('Password at least one lowercase latter')
+            return
+        }
+
+        if(password.length < 6) {
+            setError('Password must be 6 characters')
+            return
+        }
+
+            createUser(email, password)
+                .then(res => {
+                    updateUser({ displayName, photoURL })
+                    .then(() => {
+                        setUser({ ...res.user, displayName, photoURL })
+                        toast.success('Register Successfully')
+                        setLoading(false)
+                    })
+                    .catch(err => {
+                        toast(err.message)
+                    })
+                    navigate('/')
+                })
+                .catch(error => {
+                    toast.error(error.message)
+                })
 
     }
 
@@ -50,7 +79,6 @@ const Register = () => {
                             className="w-full px-4 py-3 border-b border-gray-300 focus:border-green-500 focus:ring-0 outline-none text-gray-700 placeholder-gray-500 transition duration-150 font-medium"
                         />
                     </div>
-
                     {/* photo Field */}
                     <input
                         type="text"
@@ -82,6 +110,7 @@ const Register = () => {
                             &#x1F441;
                         </span>
                     </div>
+                    <p className='text-red-500'>{error}</p>
 
                     {/* Terms and Privacy Checkbox */}
                     <div className="flex items-start pt-2 pb-4">
@@ -107,6 +136,7 @@ const Register = () => {
                     >
                         Create your account
                     </button>
+                    <p className='text-center my-5'>Already Have An Account ? <Link to={'/login'} className='text-[#F75B5F]'>Login</Link></p>
                 </form>
             </div>
         </div>

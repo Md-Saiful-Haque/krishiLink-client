@@ -7,11 +7,16 @@ import AllCrops from "../Pages/AllCrops";
 import PrivateRoute from "../context/PrivateRoute";
 import AddCrops from "../Pages/AddCrops";
 import MyPost from "../Pages/MyPost";
+import ErrorPage from "../Pages/ErrorPage";
+import Profile from "../Pages/Profile";
+import CropDetails from "../Pages/CropDetails";
+
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -41,7 +46,27 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyPost></MyPost>
                 </PrivateRoute>
+            },
+            {
+                path: '/profile',
+                element: <PrivateRoute>
+                    <Profile></Profile>
+                </PrivateRoute>
+            },
+            {
+                path: '/update/:id',
+                element: <PrivateRoute>
+                    <Profile></Profile>
+                </PrivateRoute>
+            },
+            {
+                path: '/details/:id',
+                element: <PrivateRoute>
+                    <CropDetails />
+                </PrivateRoute>,
+                loader: () => fetch('http://localhost:3000/crop')
             }
+            
         ]
     },
     

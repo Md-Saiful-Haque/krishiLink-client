@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router';
 
 const Login = () => {
     const {signIn, setUser, setLoading} = use(AuthContext)
@@ -71,6 +72,7 @@ const Login = () => {
                     >
                         Create your account
                     </button>
+                    <p className='text-center my-5'>Don't Have An Account? <Link to={'/login'} className='text-[#F75B5F]'>Register</Link></p>
                 </form>
             </div>
         </div>

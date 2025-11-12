@@ -23,8 +23,7 @@ const AddCrops = () => {
                 ownerName: user.displayName
             }
         }
-        console.log(formData)
-
+        //console.log(formData)
 
         fetch('http://localhost:3000/crop', {
             method: 'POST',
