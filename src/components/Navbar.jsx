@@ -19,12 +19,12 @@ const Navbar = () => {
     }
     return (
         <div className='bg-[#334b35]'>
-            <div className='max-w-[1200px] mx-auto flex justify-between items-center'>
+            <div className='max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center'>
                 <div className='flex items-center'>
                     <img src={logo} alt="" className='w-20 h-20' />
                     <h2 className='text-xl font-bold text-white'>Krishi</h2>
                 </div>
-                <div className='text-[#a4b7a6] space-x-5'>
+                <div className='text-[#a4b7a6] space-x-5 p-3 md:p-0 mb-3 md:mb-3'>
                     <NavLink to={'/'}>Home</NavLink>
                     <NavLink to={'/all-crops'}>All Crops</NavLink>
                     <NavLink to={'/login'}>Login</NavLink>
@@ -34,14 +34,14 @@ const Navbar = () => {
                             <NavLink to={'/profile'}>Profile</NavLink>
                             <NavLink to={'/addCrop'}>Add crops</NavLink>
                             <NavLink to={'/my-post'}>My posts</NavLink>
-                            <NavLink>My interests</NavLink>
+                            <NavLink to={'/my-interests'}>My interests</NavLink>
                         </>
 
                     }
                 </div>
                 <div>
                     {
-                        user && <Link to={'/register'}><button onClick={handleSignOut} className='bg-[#f1cf69] px-8 py-2 rounded-md text-[#334b35] font-medium text-[16px]'>Signout</button></Link>
+                        user && <Link to={'/register'}><button onClick={handleSignOut} className='bg-[#f1cf69] px-8 py-2 rounded-md text-[#334b35] font-medium text-[16px] mb-2 md:mb-0'>Signout</button></Link>
                     }
                 </div>
             </div>

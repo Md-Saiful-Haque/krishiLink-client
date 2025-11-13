@@ -8,9 +8,9 @@ const Footer = () => {
 
 
     return (
-        <div className='bg-[#334b35] mt-14'>
-            <div className='max-w-[1200px] mx-auto flex justify-between items-center pt-5'>
-                <div className='w-1/3'>
+        <div className='bg-[#334b35] '>
+            <div className='max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center pt-5 pl-2.5'>
+                <div className='md:w-1/3'>
                     <div className='flex items-center'>
                         <img src={logo} alt="" className='w-20 h-20' />
                         <h2 className='text-xl font-bold text-white'>Krishi</h2>
@@ -39,13 +39,13 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className=' flex flex-col gap-4 '>
+                <div className='flex flex-col list-none mr-70 md:mr-0 mb-3 md:mb-0 gap-4 mt-4 md:mt-0'>
                     <h2 className='text-2xl text-white font-semibold'>Explore</h2>
-                    <Link className='text-[#b3c5b5]'>New Projects</Link>
-                    <Link className='text-[#b3c5b5]'>Our services</Link>
-                    <Link className='text-[#b3c5b5]'>About Us</Link>
-                    <Link className='text-[#b3c5b5]'>Get In Touch</Link>
-                    <Link className='text-[#b3c5b5]'>Farmers</Link>
+                    <li><Link className='text-[#b3c5b5]'>New Projects</Link></li>
+                    <li><Link className='text-[#b3c5b5]'>Our services</Link></li>
+                    <li><Link className='text-[#b3c5b5]'>About Us</Link></li>
+                    <li><Link className='text-[#b3c5b5]'>Get In Touch</Link></li>
+                    <li><Link className='text-[#b3c5b5]'>Farmers</Link></li>
                 </div>
                 <div>
                     <h2 className='text-2xl text-white font-semibold'>Newletter</h2>
@@ -62,7 +62,7 @@ const Footer = () => {
             </div>
             <div className='bg-[#6d8c54]'>
                 <div className='max-w-[1200px] mx-auto flex justify-between items-center mt-10'>
-                    <p className='text-[#ffffff] mt-8 font-semibold mb-8'>© Copyright 2025 by Krishi</p>
+                    <p className='text-[#ffffff] mt-8 font-semibold mb-8 p-0.5 md:p-0'>© Copyright 2025 by Krishi</p>
                     <div></div>
                 </div>
             </div>

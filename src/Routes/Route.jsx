@@ -10,6 +10,7 @@ import MyPost from "../Pages/MyPost";
 import ErrorPage from "../Pages/ErrorPage";
 import Profile from "../Pages/Profile";
 import CropDetails from "../Pages/CropDetails";
+import MyInterests from "../Pages/MyInterests";
 
 
 export const router = createBrowserRouter([
@@ -65,6 +66,12 @@ export const router = createBrowserRouter([
                     <CropDetails />
                 </PrivateRoute>,
                 loader: () => fetch('http://localhost:3000/crop')
+            },
+            {
+                path: '/my-interests',
+                element: <PrivateRoute>
+                    <MyInterests />
+                </PrivateRoute>
             }
             
         ]

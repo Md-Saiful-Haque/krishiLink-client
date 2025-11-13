@@ -2,10 +2,13 @@ import React, { use } from 'react';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthContext';
+import Loading from './Loading';
 
 const AddCrops = () => {
     const navigate = useNavigate()
-    const { user } = use(AuthContext)
+    const { user, loading } = use(AuthContext)
+
+    if(loading) return <Loading />
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,6 +45,7 @@ const AddCrops = () => {
                 console.log(error)
             })
     }
+
     return (
         <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-10">
             <div className="card-body p-6 relative">

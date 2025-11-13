@@ -5,12 +5,15 @@ import { toast } from 'react-toastify';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FaEye } from 'react-icons/fa';
 import { IoEyeOff } from 'react-icons/io5';
+import Loading from './Loading';
 
 const Login = () => {
     const [show, setShow] = useState(false);
-    const {signIn, setUser, setLoading, signWithGoogle} = use(AuthContext)
+    const {signIn, setUser, setLoading, loading, signWithGoogle} = use(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
+
+    if(loading) return <Loading/>
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -23,6 +26,7 @@ const Login = () => {
             setUser(res.user)
             toast.success('SignIn Successfully')
             setLoading(false)
+            navigate(`${location.state ? location.state : '/'}`)
         })
         .catch(err => {
             toast.error(err.message)
@@ -43,7 +47,7 @@ const Login = () => {
         }
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-[#6d8c54] py-12">
+        <div className="flex items-center justify-center min-h-screen bg-[#6d8c54] py-12 px-3 md:px-0">
             {/* Form Card Container */}
             <div className="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
@@ -87,9 +91,9 @@ const Login = () => {
                         type="submit"
                         className="w-full bg-[#f1cf69] text-[#334b35] py-3 rounded-lg font-semibold text-lg hover:bg-[#334b35] hover:text-white focus:outline-none focus:ring-4 focus:ring-green-300 transition duration-150"
                     >
-                        Create your account
+                        SignIn your account
                     </button>
-                    <p className='text-center my-5'>Don't Have An Account? <Link to={'/login'} className='text-[#F75B5F]'>Register</Link></p>
+                    <p className='text-center my-5'>Don't Have An Account? <Link to={'/register'} className='text-[#F75B5F]'>Register</Link></p>
                 </form>
             </div>
         </div>

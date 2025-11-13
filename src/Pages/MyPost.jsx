@@ -4,14 +4,14 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import Loading from './Loading';
 
 const MyPost = () => {
-    const { user } = use(AuthContext)
+    const { user, loading } = use(AuthContext)
     const [myCrops, setMyCrops] = useState([])
     const modalRef = useRef()
     const [defaultValue, setDefaultValue] = useState(null)
     console.log(defaultValue)
-
 
     useEffect(() => {
         if (user?.email) {
@@ -103,6 +103,7 @@ const MyPost = () => {
         });
     }
 
+    if (loading) return <Loading />
 
     return (
         <div className="container mx-auto p-4 max-w-[1200px]">

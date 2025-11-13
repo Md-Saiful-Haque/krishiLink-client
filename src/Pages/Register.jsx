@@ -69,7 +69,7 @@ const Register = () => {
 
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-[#6d8c54] py-12">
+        <div className="flex items-center justify-center min-h-screen bg-[#6d8c54] py-12 px-3 md:px-0">
             {/* Form Card Container */}
             <div className="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">

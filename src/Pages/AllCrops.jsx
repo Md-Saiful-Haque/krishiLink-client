@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import CropsCard from '../components/CropsCard';
+import { AuthContext } from '../context/AuthContext';
+import Loading from './Loading';
 
 const AllCrops = () => {
     const data = useLoaderData()
     //console.log(crops)
     const [crops, setCrops] = useState(data)
+    const {loading} = use(AuthContext)
+
+    if(loading) return <Loading></Loading>
 
     const handleSearch = (e) => {
         e.preventDefault();
