@@ -1,7 +1,10 @@
 import React from 'react';
 import logo from '../assets/logo.png'
-import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { FaEnvelope, FaFacebookSquare, FaInstagramSquare, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import { Link } from 'react-router';
+import { FaSquareXTwitter } from 'react-icons/fa6';
+import { IoLogoYoutube } from 'react-icons/io5';
+
 //mport footerImg from '../assets/footer.png' 
 
 const Footer = () => {
@@ -63,7 +66,12 @@ const Footer = () => {
             <div className='bg-[#6d8c54]'>
                 <div className='max-w-[1200px] mx-auto flex justify-between items-center mt-10'>
                     <p className='text-[#ffffff] mt-8 font-semibold mb-8 p-0.5 md:p-0'>© Copyright 2025 by Krishi</p>
-                    <div></div>
+                    <div className='flex items-center gap-8 text-white p-2 md:p-0'>
+                        <FaSquareXTwitter />
+                        <FaFacebookSquare />
+                        <FaInstagramSquare />
+                        <IoLogoYoutube />
+                    </div>
                 </div>
             </div>
         </div>
