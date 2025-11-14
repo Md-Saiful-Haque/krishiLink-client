@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 import { FaSquareXTwitter } from 'react-icons/fa6';
 import { IoLogoYoutube } from 'react-icons/io5';
 
-//mport footerImg from '../assets/footer.png' 
 
 const Footer = () => {
 
