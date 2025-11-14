@@ -25,24 +25,27 @@ const Navbar = () => {
                     <h2 className='text-xl font-bold text-white'>Krishi</h2>
                 </div>
                 <div className='text-[#a4b7a6] space-x-5 p-3 md:p-0 mb-3 md:mb-3'>
-                    <NavLink to={'/'}>Home</NavLink>
-                    <NavLink to={'/all-crops'}>All Crops</NavLink>
-                    <NavLink to={'/login'}>Login</NavLink>
-                    <NavLink to={'/register'}>Register</NavLink>
+                    <NavLink to={'/'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>Home</NavLink>
+                    <NavLink to={'/all-crops'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>All Crops</NavLink>
+                    <NavLink to={'/login'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>Login</NavLink>
+                    <NavLink to={'/register'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>Register</NavLink>
                     {
                         user && <>
-                            <NavLink to={'/profile'}>Profile</NavLink>
-                            <NavLink to={'/addCrop'}>Add crops</NavLink>
-                            <NavLink to={'/my-post'}>My posts</NavLink>
-                            <NavLink to={'/my-interests'}>My interests</NavLink>
+                            <NavLink to={'/profile'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>Profile</NavLink>
+                            <NavLink to={'/addCrop'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>Add crops</NavLink>
+                            <NavLink to={'/my-post'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>My posts</NavLink>
+                            <NavLink to={'/my-interests'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>My interests</NavLink>
                         </>
 
                     }
                 </div>
-                <div>
+                <div className='flex items-center gap-2 justify-between'>
                     {
                         user && <Link to={'/register'}><button onClick={handleSignOut} className='bg-[#f1cf69] px-8 py-2 rounded-md text-[#334b35] font-medium text-[16px] mb-2 md:mb-0'>Signout</button></Link>
                     }
+                    <div>
+                        {user && <img className='w-[45px] h-[45px] rounded-full' src={user.photoURL} alt="" /> }
+                    </div>
                 </div>
             </div>
         </div>

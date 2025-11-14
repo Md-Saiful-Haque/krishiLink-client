@@ -1,5 +1,5 @@
 import React, { use, useEffect, useRef, useState } from 'react';
-import { Link, useParams,  } from 'react-router';
+import { Link, useParams, } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
@@ -13,7 +13,7 @@ const CropDetails = () => {
     const modalRef = useRef()
     const { user, loading, setLoading } = use(AuthContext)
     console.log(interest, crop)
-    
+
 
 
     useEffect(() => {
@@ -22,19 +22,19 @@ const CropDetails = () => {
             .then(data => {
                 setCrop(data.result)
                 setLoading(false)
-                
+
             })
-            fetch(`http://localhost:3000/crop/interests/${cropId}`)
+        fetch(`http://localhost:3000/crop/interests/${cropId}`)
             .then((res) => res.json())
             .then(data => {
                 console.log(data)
                 setInterest(data)
-                setLoading(false)    
+                setLoading(false)
             })
     }, [cropId, setLoading])
 
     // useEffect(() => {
-        
+
     // }, [cropId])
 
 
@@ -47,10 +47,12 @@ const CropDetails = () => {
         const quantity = e.target.quantity.value
         const message = e.target.message.value
 
+
         if (quantity < 1) return toast.error("Quantity must be at least 1");
 
         const newInterests = {
             cropId: cropId,
+            cropName: crop.name,
             userEmail: user.email,
             userName: user.displayName,
             quantity: quantity,
@@ -83,11 +85,35 @@ const CropDetails = () => {
                     updateInterests.sort((a, b) => b.quantity - a.quantity);
                     setInterest(updateInterests);
                 }
-                else{
-                      toast('Already added') 
-                    }
+                else {
+                    toast('Already added')
+                }
             })
     }
+
+    // const handleAction = (interestId, status) => {
+    //     const interestaUpdate = {
+    //         status: status
+    //     }
+    // }
+
+    const handleStatusUpdate = async (interestId, status) => {
+    const res = await fetch(`http://localhost:3000/interest/${interestId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status }),
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      alert(`Interest ${status}!`);
+      setInterest((prev) =>
+        prev.map((i) => (i._id === interestId ? data.result : i))
+      );
+    } else {
+      alert("Failed to update status.");
+    }
+  };
 
     const isOwner = user?.email === crop?.owner?.ownerEmail;
 
@@ -96,7 +122,7 @@ const CropDetails = () => {
     );
     const totalPrice = crop.quantity * crop.pricePerUnit;
 
-    if(loading) return <Loading />
+    if (loading) return <Loading />
 
     return (
         <div>
@@ -178,63 +204,63 @@ const CropDetails = () => {
                 </dialog>
             </div>
             {/* Owner View: Received Interests */}
-{isOwner && (
-            <div className='max-w-[1200px] mx-auto mb-10'>
-                <h2 className="text-xl font-semibold mb-4">Received Interests</h2>
-{interest?.length === 0 ? (
-            <p>No interests received yet.</p>
-          ) : (
-                <div className="overflow-x-auto">
-                    <table className="w-full border-collapse">
-                        <thead>
-                            <tr className="bg-gray-100 text-left">
-                                <th className="p-3 border">Buyer</th>
-                                <th className="p-3 border">Quantity</th>
-                                <th className="p-3 border">Message</th>
-                                <th className="p-3 border">Status</th>
-                                <th className="p-3 border">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {interest?.map((i) => (
-                                <tr key={i._id}>
-                                    <td className="p-3 border">{i.userName}</td>
-                                    <td className="p-3 border">{i.quantity}</td>
-                                    <td className="p-3 border">{i.message}</td>
-                                    <td
-                                        className={`p-3 border font-semibold ${i.status === "accepted"
-                                            ? "text-green-600"
-                                            : i.status === "rejected"
-                                                ? "text-red-600"
-                                                : "text-yellow-600"
-                                            }`}
-                                    >
-                                        {i.status}
-                                    </td>
-                                    <td className="p-3 border">
-                                        {i.status === "pending" && (
-                                            <div className="flex gap-2">
-                                                <button
+            {isOwner && (
+                <div className='max-w-[1200px] mx-auto mb-10'>
+                    <h2 className="text-xl font-semibold mb-4">Received Interests</h2>
+                    {interest?.length === 0 ? (
+                        <p>No interests received yet.</p>
+                    ) : (
+                        <div className="overflow-x-auto">
+                            <table className="w-full border-collapse">
+                                <thead>
+                                    <tr className="bg-gray-100 text-left">
+                                        <th className="p-3 border">Buyer</th>
+                                        <th className="p-3 border">Quantity</th>
+                                        <th className="p-3 border">Message</th>
+                                        <th className="p-3 border">Status</th>
+                                        <th className="p-3 border">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {interest?.map((i) => (
+                                        <tr key={i._id}>
+                                            <td className="p-3 border">{i.userName}</td>
+                                            <td className="p-3 border">{i.quantity}</td>
+                                            <td className="p-3 border">{i.message}</td>
+                                            <td
+                                                className={`p-3 border font-semibold ${i.status === "accepted"
+                                                    ? "text-green-600"
+                                                    : i.status === "rejected"
+                                                        ? "text-red-600"
+                                                        : "text-yellow-600"
+                                                    }`}
+                                            >
+                                                {i.status}
+                                            </td>
+                                            <td className="p-3 border">
+                                                {i.status === "pending" && (
+                                                    <div className="flex gap-2">
+                                                        <button onClick={() => handleStatusUpdate(i._id, "accepted")}
 
-                                                    className="bg-green-600 text-white px-3 py-1 rounded"
-                                                >
-                                                    Accept
-                                                </button>
-                                                <button
+                                                            className="bg-green-600 text-white px-3 py-1 rounded"
+                                                        >
+                                                            Accept
+                                                        </button>
+                                                        <button onClick={() => handleStatusUpdate(i._id, "rejected")}
 
-                                                    className="bg-red-500 text-white px-3 py-1 rounded"
-                                                >
-                                                    Reject
-                                                </button>
-                                            </div>
-                                        )}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            )}</div>)}
+                                                            className="bg-red-500 text-white px-3 py-1 rounded"
+                                                        >
+                                                            Reject
+                                                        </button>
+                                                    </div>
+                                                )}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}</div>)}
         </div>
     );
 };

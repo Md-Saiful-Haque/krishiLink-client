@@ -11,7 +11,7 @@ const MyPost = () => {
     const [myCrops, setMyCrops] = useState([])
     const modalRef = useRef()
     const [defaultValue, setDefaultValue] = useState(null)
-    console.log(defaultValue)
+    
 
     useEffect(() => {
         if (user?.email) {
@@ -33,7 +33,6 @@ const MyPost = () => {
 
     const handleUpdateCrop = (e, id) => {
         e.preventDefault();
-        console.log(id)
         const formData = {
             name: e.target.name.value,
             type: e.target.type.value,
@@ -44,7 +43,6 @@ const MyPost = () => {
             location: e.target.location.value,
             image: e.target.image.value,
         }
-        console.log(formData)
 
         fetch(`http://localhost:3000/crop/${id}`, {
             method: 'PUT',

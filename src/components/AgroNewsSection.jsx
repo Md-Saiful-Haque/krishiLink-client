@@ -34,7 +34,7 @@ const AgroNewsSection = () => {
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-[#334b35]">
+          <h2 className="text-4xl font-bold text-[#334b35]">
             Agro News & Blogs
           </h2>
           <p className="text-gray-600 mt-2">
