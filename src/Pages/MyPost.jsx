@@ -4,10 +4,10 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
-import Loading from './Loading';
+
 
 const MyPost = () => {
-    const { user, loading } = use(AuthContext)
+    const { user } = use(AuthContext)
     const [myCrops, setMyCrops] = useState([])
     const modalRef = useRef()
     const [defaultValue, setDefaultValue] = useState(null)
@@ -101,8 +101,7 @@ const MyPost = () => {
         });
     }
 
-    if (loading) return <Loading />
-
+    
     return (
         <div className="container mx-auto p-4 max-w-[1200px]">
             <h2 className="text-3xl font-bold mb-6 text-center">My Crop Posts</h2>

@@ -6,9 +6,8 @@ import Loading from './Loading';
 
 const AddCrops = () => {
     const navigate = useNavigate()
-    const { user, loading } = use(AuthContext)
+    const { user } = use(AuthContext)
 
-    if(loading) return <Loading />
 
     const handleSubmit = (e) => {
         e.preventDefault();

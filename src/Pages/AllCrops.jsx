@@ -25,8 +25,9 @@ const AllCrops = () => {
     }
 
     if(crops.length === 0) return <p className='text-center mt-10 font-bold'>No crop found here</p>
+
     return (
-        <div className='mt-14 bg-[#f2f2f2]'>
+        <div className='mt-14 bg-[#f2f2f2] mb-14'>
             <div className='flex justify-between items-center mb-10 max-w-[1200px] mx-auto pt-4'>
                 <h2 className='font-bold text-3xl text-[#334b35]'>All Crop</h2>
                 <form onSubmit={handleSearch} className='flex justify-center gap-2 items-center'>

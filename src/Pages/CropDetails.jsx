@@ -5,14 +5,18 @@ import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import Loading from './Loading';
 
+
 const CropDetails = () => {
     const { id: cropId } = useParams()
     //const { data } = useLoaderData()
     const [crop, setCrop] = useState({})
     const [interest, setInterest] = useState([])
     const modalRef = useRef()
-    const { user, loading, setLoading } = use(AuthContext)
-    console.log(interest, crop)
+    const { user } = use(AuthContext)
+    //console.log(interest, crop)
+    const [loading, setLoading] = useState(true)
+    const [quantity, setQuantity] = useState(0)
+
 
 
 
@@ -22,7 +26,6 @@ const CropDetails = () => {
             .then(data => {
                 setCrop(data.result)
                 setLoading(false)
-
             })
         fetch(`http://localhost:3000/crop/interests/${cropId}`)
             .then((res) => res.json())
@@ -33,9 +36,7 @@ const CropDetails = () => {
             })
     }, [cropId, setLoading])
 
-    // useEffect(() => {
-
-    // }, [cropId])
+    if(loading) return <Loading />
 
 
     const handleInterest = () => {
@@ -44,7 +45,7 @@ const CropDetails = () => {
 
     const handleInterestSubmit = (e) => {
         e.preventDefault();
-        const quantity = e.target.quantity.value
+        
         const message = e.target.message.value
 
 
@@ -105,6 +106,13 @@ const CropDetails = () => {
     });
     const data = await res.json();
 
+    fetch(`http://localhost:3000/crop/${cropId}`)
+            .then((res) => res.json())
+            .then(data => {
+                setCrop(data.result)
+                setLoading(false)
+            })
+
     if (data.success) {
       alert(`Interest ${status}!`);
       setInterest((prev) =>
@@ -122,7 +130,6 @@ const CropDetails = () => {
     );
     const totalPrice = crop.quantity * crop.pricePerUnit;
 
-    if (loading) return <Loading />
 
     return (
         <div>
@@ -173,6 +180,7 @@ const CropDetails = () => {
                                             name='quantity'
                                             className="border w-full p-2 rounded"
                                             required
+                                            onChange={(e) => setQuantity(Number(e.target.value))}
                                         />
                                     </div>
                                     <div>

@@ -1,15 +1,14 @@
-import React, { use } from 'react';
+import React from 'react';
 import CropsCard from '../components/CropsCard';
-import { Link } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import Banner from '../components/Banner';
 import { FaSeedling, FaHandsHelping, FaShippingFast, FaNewspaper, FaChartLine } from 'react-icons/fa';
 import Hero from '../components/Hero';
 import AgroNewsSection from '../components/AgroNewsSection';
 
-const cropPromise = fetch('http://localhost:3000/latest/crop').then(res => res.json())
 
 const Home = () => {
-    const crops = use(cropPromise)
+    const crops = useLoaderData()
     
 
     const howItWorksSteps = [
