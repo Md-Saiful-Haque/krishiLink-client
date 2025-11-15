@@ -3,8 +3,11 @@ import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../context/AuthContext';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+import { FaEye } from 'react-icons/fa';
+import { IoEyeOff } from 'react-icons/io5';
 
 const Register = () => {
+    const [show, setShow] = useState(false);
     const { createUser, setUser, updateUser, setLoading, signWithGoogle } = use(AuthContext)
     const [error, setError] = useState('')
     const navigate = useNavigate()
@@ -70,6 +73,7 @@ const Register = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-[#6d8c54] py-12 px-3 md:px-0">
+            <title>krishiLink-Register</title>
             {/* Form Card Container */}
             <div className="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
@@ -113,15 +117,15 @@ const Register = () => {
                     {/* Password Field */}
                     <div className="relative">
                         <input
-                            type="password"
+                            type={show ? "text" : "password"}
                             name='password'
                             placeholder="Password*"
                             required
                             className="w-full px-4 py-3 border-b border-gray-300 focus:border-green-500 focus:ring-0 outline-none text-gray-700 placeholder-gray-500 pr-10 transition duration-150 font-medium"
                         />
-                        {/* Eye icon - use a proper React icon library (like lucide-react) for production */}
-                        <span className="absolute right-0 top-1/2 transform -translate-y-1/2 p-3 text-gray-500 cursor-pointer text-xl">
-                            &#x1F441;
+                        {/* Eye icon  */}
+                        <span onClick={() => setShow(!show)} className="absolute right-0 top-1/2 transform -translate-y-1/2 p-3 text-gray-500 cursor-pointer text-xl">
+                            {show ? <FaEye size={25} /> : <IoEyeOff size={25} />}
                         </span>
                     </div>
                     <p className='text-red-500'>{error}</p>

@@ -21,6 +21,7 @@ const Profile = () => {
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-10 mt-10 gap-3.5 mb-10 max-w-[1200px] mx-auto p-3 md:p-0'>
+                <title>krishiLink-My Profile</title>
                 <div className='col-span-2 bg-[#170f21] rounded-lg p-5 flex flex-col justify-center items-center'>
                     <img className='rounded-full w-[100px] h-[100px]' src={`${user && user.photoURL}`} alt="" />
                     <h1 className='text-[#c2acff] font-bold my-2'>{user?.displayName}</h1>

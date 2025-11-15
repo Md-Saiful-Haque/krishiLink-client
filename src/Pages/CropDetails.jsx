@@ -21,22 +21,22 @@ const CropDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:3000/crop/${cropId}`)
+        setLoading(true)
+        fetch(`https://krishi-link-server-iota.vercel.app/crop/${cropId}`)
             .then((res) => res.json())
             .then(data => {
                 setCrop(data.result)
                 setLoading(false)
             })
-        fetch(`http://localhost:3000/crop/interests/${cropId}`)
+            setLoading(true)
+        fetch(`https://krishi-link-server-iota.vercel.app/crop/interests/${cropId}`)
             .then((res) => res.json())
             .then(data => {
                 console.log(data)
                 setInterest(data)
                 setLoading(false)
             })
-    }, [cropId, setLoading])
-
-    if(loading) return <Loading />
+    }, [cropId])
 
 
     const handleInterest = () => {
@@ -61,7 +61,7 @@ const CropDetails = () => {
             status: 'pending'
         }
 
-        fetch('http://localhost:3000/interests', {
+        fetch('https://krishi-link-server-iota.vercel.app/interests', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -92,21 +92,17 @@ const CropDetails = () => {
             })
     }
 
-    // const handleAction = (interestId, status) => {
-    //     const interestaUpdate = {
-    //         status: status
-    //     }
-    // }
+    if(loading) return <Loading />
 
     const handleStatusUpdate = async (interestId, status) => {
-    const res = await fetch(`http://localhost:3000/interest/${interestId}`, {
+    const res = await fetch(`https://krishi-link-server-iota.vercel.app/interest/${interestId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status }),
     });
     const data = await res.json();
 
-    fetch(`http://localhost:3000/crop/${cropId}`)
+    fetch(`https://krishi-link-server-iota.vercel.app/crop/${cropId}`)
             .then((res) => res.json())
             .then(data => {
                 setCrop(data.result)
@@ -133,6 +129,7 @@ const CropDetails = () => {
 
     return (
         <div>
+            <title>krishiLink Crop Details</title>
             <div className='bg-[#FFFFFF] shadow-md p-3 rounded-md max-w-[1200px] mx-auto'>
                 <div className='md:w-1/2'>
                     <div className=''>

@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />,
-                loader: () => fetch('http://localhost:3000/latest/crop')
+                loader: () => fetch('https://krishi-link-server-iota.vercel.app/latest/crop')
             },
             {
                 path: '/register',
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
             {
                 path: '/all-crops',
                 element: <AllCrops />,
-                loader: () => fetch('http://localhost:3000/crop')
+                loader: () => fetch('https://krishi-link-server-iota.vercel.app/crop')
             },
             {
                 path: '/addCrop',
@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <CropDetails />
                 </PrivateRoute>,
-                loader: () => fetch('http://localhost:3000/crop')
+                loader: () => fetch('https://krishi-link-server-iota.vercel.app/crop')
             },
             {
                 path: '/my-interests',

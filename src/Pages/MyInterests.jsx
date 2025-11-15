@@ -2,23 +2,24 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 const MyInterests = () => {
-    const { user } = use(AuthContext)
-    const [interests, setInterests] = useState([])
+  const { user } = use(AuthContext)
+  const [interests, setInterests] = useState([])
 
-    useEffect(() => {
-        if (user?.email) {
-            fetch(`http://localhost:3000/interests?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => {
-                    //console.log(data)
-                    setInterests(data)
-                })
-        }
-    }, [user])
+  useEffect(() => {
+    if (user?.email) {
+      fetch(`https://krishi-link-server-iota.vercel.app/interests?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => {
+          //console.log(data)
+          setInterests(data)
+        })
+    }
+  }, [user])
 
 
-    return (
-        <section className="py-12 px-4 bg-gray-50 min-h-screen">
+  return (
+    <section className="py-12 px-4 bg-gray-50 min-h-screen">
+      <title>krishiLink-My Interest</title>
       <div className="max-w-6xl mx-auto bg-white shadow-md rounded-2xl overflow-hidden">
         <div className="p-6 border-b border-gray-200 flex justify-between items-center">
           <h2 className="text-2xl font-semibold text-green-700">
@@ -67,7 +68,7 @@ const MyInterests = () => {
         </div>
       </div>
     </section>
-    );
+  );
 };
 
 export default MyInterests;

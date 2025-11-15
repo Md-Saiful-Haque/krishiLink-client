@@ -15,7 +15,7 @@ const MyPost = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/crop?email=${user.email}`)
+            fetch(`https://krishi-link-server-iota.vercel.app/crop?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setMyCrops(data)
@@ -44,7 +44,7 @@ const MyPost = () => {
             image: e.target.image.value,
         }
 
-        fetch(`http://localhost:3000/crop/${id}`, {
+        fetch(`https://krishi-link-server-iota.vercel.app/crop/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,7 +80,7 @@ const MyPost = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/crop/${id}`, {
+                fetch(`https://krishi-link-server-iota.vercel.app/crop/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -104,6 +104,7 @@ const MyPost = () => {
     
     return (
         <div className="container mx-auto p-4 max-w-[1200px]">
+            <title>krishiLink-My Post</title>
             <h2 className="text-3xl font-bold mb-6 text-center">My Crop Posts</h2>
             <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">

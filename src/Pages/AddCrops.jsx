@@ -27,7 +27,7 @@ const AddCrops = () => {
         }
         //console.log(formData)
 
-        fetch('http://localhost:3000/crop', {
+        fetch('https://krishi-link-server-iota.vercel.app/crop', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,6 +47,7 @@ const AddCrops = () => {
 
     return (
         <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-10">
+            <title>krishiLink-Add-Crop</title>
             <div className="card-body p-6 relative">
                 <h2 className="text-2xl font-bold text-[#334b35] text-center mb-6">Add New Crop</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
