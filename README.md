@@ -4,6 +4,20 @@
 
 ---
 
+## 🌐 Live Website
+🔗 **Live Link:** https://krishilink-client-project.netlify.app/  -->
+
+---
+
+## 🎯 Project Purpose
+The main goal of KrishiLink is to:
+- Create a digital community for agricultural collaboration
+- Enable farmers and traders to connect directly
+- Allow users to post, browse, and manage crop listings
+- Provide a secure and user-friendly experience with authentication
+
+---
+
 ## 🚀 Key Features
 
 - 🧑‍🌾 **Farmer-Friendly Posting:** Users can post details about crops they are growing or selling.
@@ -16,4 +30,55 @@
 
 ---
 
-#[Live URL](https://krishilink-client-project.netlify.app/)
+## 🛠️ Technologies Used
+
+### Frontend
+- React.js
+- React Router DOM
+- Tailwind CSS
+- DaisyUI
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+
+### Authentication & Hosting
+- Firebase Authentication
+- Netlify (Client)
+- Vercel (Server)
+
+### Packages & Tools
+- Axios
+- React Toastify / SweetAlert2
+- Swiper Slider
+- dotenv
+
+---
+
+## 📦 NPM Packages Used
+### Client Side
+- react
+- react-router-dom
+- firebase
+- axios
+- swiper
+- react-toastify
+- tailwindcss
+- daisyui
+
+### Server Side
+- express
+- cors
+- mongodb
+- dotenv
+
+---
+
+## How to run locally
+
+- git clone repo (client & server)
+- set .env
+- npm install
+- npm run dev (for client)
+- nodemon index.js (for server)
