@@ -1,42 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CropsCard from '../components/CropsCard';
 import { Link, useLoaderData } from 'react-router';
 import Banner from '../components/Banner';
 import { FaSeedling, FaHandsHelping, FaShippingFast, FaNewspaper, FaChartLine } from 'react-icons/fa';
 import Hero from '../components/Hero';
 import AgroNewsSection from '../components/AgroNewsSection';
+import SkeletonLoader from '../components/SkeletonLoader';
 
 
 const Home = () => {
-    const crops = useLoaderData()
-    
+  const crops = useLoaderData()
+  const [loading, setLoading] = useState(true);
 
-    const howItWorksSteps = [
+  useEffect(() => {
+    if (crops && crops.length > 0) {
+      setLoading(false);
+    }
+  }, [crops]);
+
+
+  const howItWorksSteps = [
     { icon: FaSeedling, title: "Post Your Crop", description: "Farmers list what they are growing, including estimated quantity and price." },
     { icon: FaHandsHelping, title: "Browse & Connect", description: "Traders and consumers browse posts and submit an 'Interest' request." },
     { icon: FaShippingFast, title: "Collaborate", description: "Owners manage interests (Accept/Reject) to start a direct connection for trade." },
   ];
-    
-    return (
-        <div>
-            <Banner/>
-            <div className='mt-14'>
-              <Hero/>
-            </div>
-        <div className='mt-14 bg-[#f2f2f2]'>
-            <h2 className='text-center font-bold p-8 text-3xl text-[#334b35]'>Latest Crop</h2>
-            <div className='max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 p-3 md:p-0 gap-4'>
-                {
-                    crops.map(crop => <CropsCard key={crop._id} crop={crop}></CropsCard>)
-                }
-            </div>
-            <div className='mt-10 flex justify-center items-center'>
-                <Link to={'/all-crops'}><button className='bg-[#f1cf69] px-8 py-2 rounded-md text-[#334b35] font-medium text-[16px]'>Show More</button></Link>
-            </div>
-        </div>
 
-        {/* 3. How It Works Section */}
-      <section id="how-it-works" className="bg-green-50 dark:bg-gray-900 py-16 mt-14">
+  return (
+    <div>
+      <Banner />
+      <div className='mt-14'>
+        <Hero />
+      </div>
+      <div className='mt-14 bg-[#f2f2f2]'>
+        <h2 className='text-center font-bold p-8 text-3xl text-[#334b35]'>Latest Crop</h2>
+        {
+          loading ? 
+          <SkeletonLoader /> :
+          <div className='max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 p-3 md:p-0 gap-4'>
+          {
+            crops.map(crop => <CropsCard key={crop._id} crop={crop}></CropsCard>)
+          }
+        </div>
+        }
+        <div className='mt-10 flex justify-center items-center'>
+          <Link to={'/all-crops'}><button className='bg-[#f1cf69] px-8 py-2 rounded-md text-[#334b35] font-medium text-[16px]'>Show More</button></Link>
+        </div>
+      </div>
+
+      {/* 3. How It Works Section */}
+      <section id="how-it-works" className="bg-green-50 dark:bg-gray-900 py-16 ">
         <div className="max-w-[1200px] mx-auto px-4">
           <h2 className="text-4xl font-bold text-center text-[#334b35] mb-12">🤝 How Krishi Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -99,8 +111,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-     </div>
-    );
+    </div>
+  );
 };
 
 export default Home;

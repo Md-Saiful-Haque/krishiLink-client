@@ -18,7 +18,7 @@ const Navbar = () => {
             })
     }
     return (
-        <div className='bg-[#334b35]'>
+        <div className='bg-[#334b35] sticky top-0 z-50'>
             <div className='max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center'>
                 <div className='flex items-center'>
                     <img src={logo} alt="" className='w-20 h-20' />
@@ -29,6 +29,7 @@ const Navbar = () => {
                     <NavLink to={'/all-crops'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>All Crops</NavLink>
                     <NavLink to={'/login'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>Login</NavLink>
                     <NavLink to={'/register'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>Register</NavLink>
+                    <NavLink to={'/about'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>About</NavLink>
                     {
                         user && <>
                             <NavLink to={'/profile'} style={({ isActive }) => ({ color: isActive && '#f1cf69' })}>Profile</NavLink>

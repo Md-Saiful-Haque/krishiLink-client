@@ -45,7 +45,7 @@ const Footer = () => {
                     <h2 className='text-2xl text-white font-semibold'>Explore</h2>
                     <li><Link className='text-[#b3c5b5]'>New Projects</Link></li>
                     <li><Link className='text-[#b3c5b5]'>Our services</Link></li>
-                    <li><Link className='text-[#b3c5b5]'>About Us</Link></li>
+                    <li><Link to={'/about'} className='text-[#b3c5b5]'>About Us</Link></li>
                     <li><Link className='text-[#b3c5b5]'>Get In Touch</Link></li>
                     <li><Link className='text-[#b3c5b5]'>Farmers</Link></li>
                 </div>

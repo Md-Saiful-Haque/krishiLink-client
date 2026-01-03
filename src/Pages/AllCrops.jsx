@@ -1,30 +1,34 @@
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import CropsCard from '../components/CropsCard';
 import { AuthContext } from '../context/AuthContext';
 import Loading from './Loading';
+import SkeletonLoader from '../components/SkeletonLoader';
 
 const AllCrops = () => {
     const data = useLoaderData()
     //console.log(crops)
     const [crops, setCrops] = useState(data)
-    const {setLoading} = use(AuthContext)
+    // const {setLoading} = use(AuthContext)
+    const [loading, setLoading] = useState(false)
 
-    
+
     const handleSearch = (e) => {
         e.preventDefault();
         const search = e.target.search.value;
 
         fetch(`https://krishi-link-server-iota.vercel.app/search?search=${search}`)
-        .then(res => res.json())
-        .then(data => {
-            //console.log(data)
-            setCrops(data)
-            setLoading(false)
-        })
+            .then(res => res.json())
+            .then(data => {
+                //console.log(data)
+                setCrops(data)
+                setLoading(false)
+            })          
+            
     }
 
-    if(crops.length === 0) return <p className='text-center mt-14 font-bold mb-14'>No crop found here</p>
+
+    if (crops.length === 0) return <p className='text-center mt-14 font-bold mb-14'>No crop found here</p>
 
     return (
         <div className='mt-14 bg-[#f2f2f2] mb-14'>
@@ -50,11 +54,17 @@ const AllCrops = () => {
                     <button className='bg-[#f1cf69] px-8 py-2 text-[#334b35] font-medium text-[16px] rounded-full'>Search</button>
                 </form>
             </div>
-            <div className='max-w-[1200px] mx-auto grid grid-cols-3 gap-4'>
+            
                 {
-                    crops.map(crop => <CropsCard key={crop._id} crop={crop}></CropsCard>)
+                    loading ?
+                        <SkeletonLoader /> :
+                        <div className='max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 p-3 md:p-0 gap-4'>
+                            {
+                                crops.map(crop => <CropsCard key={crop._id} crop={crop}></CropsCard>)
+                            }
+                        </div>
                 }
-            </div>
+            
         </div>
     );
 };

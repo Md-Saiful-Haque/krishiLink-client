@@ -11,6 +11,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import Profile from "../Pages/Profile";
 import CropDetails from "../Pages/CropDetails";
 import MyInterests from "../Pages/MyInterests";
+import About from "../Pages/About";
 
 
 export const router = createBrowserRouter([
@@ -63,9 +64,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/details/:id',
-                element: <PrivateRoute>
-                    <CropDetails />
-                </PrivateRoute>,
+                element: <CropDetails />,
                 loader: () => fetch('https://krishi-link-server-iota.vercel.app/crop')
             },
             {
@@ -73,8 +72,11 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MyInterests />
                 </PrivateRoute>
+            },
+            {
+                path: '/about',
+                Component: About 
             }
-            
         ]
     },
     

@@ -14,7 +14,7 @@ const MainLayout = () => {
             </header>
             <section>
                 <>
-                {navigation.state === "loading" && <p><Loading /></p>}
+                {navigation.state === "loading" && <><Loading /></>}
                 <Outlet></Outlet>
                 </>
             </section>

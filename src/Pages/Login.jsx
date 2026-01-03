@@ -9,42 +9,49 @@ import Loading from './Loading';
 
 const Login = () => {
     const [show, setShow] = useState(false);
-    const {signIn, setUser, setLoading, loading, signWithGoogle} = use(AuthContext)
+    const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+    const { signIn, setUser, setLoading, loading, signWithGoogle } = use(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
-    if(loading) return <Loading/>
+    if (loading) return <Loading />
 
     const handleSignIn = (e) => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+        // const email = e.target.email.value;
+        // const password = e.target.password.value;
         console.log(email, password)
 
         signIn(email, password)
-        .then(res => {
-            setUser(res.user)
-            toast.success('SignIn Successfully')
-            setLoading(false)
-            navigate(`${location.state ? location.state : '/'}`)
-        })
-        .catch(err => {
-            toast.error(err.message)
-        })
+            .then(res => {
+                setUser(res.user)
+                toast.success('SignIn Successfully')
+                setLoading(false)
+                navigate(`${location.state ? location.state : '/'}`)
+            })
+            .catch(err => {
+                toast.error(err.message)
+            })
     }
 
     const handleGoogleSignIn = () => {
-            signWithGoogle()
-                .then(res => {
-                    setUser(res.user)
-                    toast.success('Register Successfully')
-                    setLoading(false)
-                    navigate(`${location.state ? location.state : '/'}`)
-                })
-                .catch(err => {
-                    toast(err.message)
-                })
-        }
+        signWithGoogle()
+            .then(res => {
+                setUser(res.user)
+                toast.success('Register Successfully')
+                setLoading(false)
+                navigate(`${location.state ? location.state : '/'}`)
+            })
+            .catch(err => {
+                toast(err.message)
+            })
+    }
+
+    const handleDemoLogin = () => {
+        setEmail("saiful@gmail.com");
+        setPassword("Asdfghj");
+    };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-[#6d8c54] py-12 px-3 md:px-0">
@@ -52,8 +59,16 @@ const Login = () => {
             {/* Form Card Container */}
             <div className="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-                    Sign In
+                    Sign In to KrishiLink
                 </h2>
+
+                {/* 🧪 Demo User Button */}
+                <button
+                    onClick={handleDemoLogin}
+                    className="w-full mb-4 border border-green-600 text-green-600 py-2 rounded-lg text-sm font-semibold hover:bg-green-50"
+                >
+                    Use Demo Account
+                </button>
 
                 {/* Sign up with Google Button */}
                 <button onClick={handleGoogleSignIn} className="w-full flex items-center gap-1.5 justify-center border border-gray-300 rounded-lg py-2.5 text-gray-700 hover:bg-gray-50 transition duration-150 mb-6">
@@ -68,6 +83,8 @@ const Login = () => {
                         type="email"
                         name='email'
                         placeholder="Email*"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                         className="w-full px-4 py-3 border-b border-gray-300 focus:border-green-500 focus:ring-0 outline-none text-gray-700 placeholder-gray-500 transition duration-150 font-medium"
                     />
@@ -78,6 +95,8 @@ const Login = () => {
                             type={show ? "text" : "password"}
                             name='password'
                             placeholder="Password*"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             required
                             className="w-full px-4 py-3 border-b border-gray-300 focus:border-green-500 focus:ring-0 outline-none text-gray-700 placeholder-gray-500 pr-10 transition duration-150 font-medium"
                         />

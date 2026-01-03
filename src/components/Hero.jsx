@@ -39,7 +39,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="w-full h-[80vh] relative">
+    <div className="w-full h-[60vh] relative">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         effect="fade"
@@ -70,7 +70,7 @@ const Hero = () => {
                 </p>
                 <Link
                   to="/all-properties"
-                  className="btn bg-[#0F5660] border-none text-white text-base px-6 hover:bg-[#134a51]"
+                  className="btn bg-[#f1cf69] border-none text-[#334b35] text-base px-6 hover:bg-[#134a51]"
                 >
                   {slide.btnText}
                 </Link>
