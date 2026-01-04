@@ -69,8 +69,8 @@ const Hero = () => {
                   {slide.description}
                 </p>
                 <Link
-                  to="/all-properties"
-                  className="btn bg-[#f1cf69] border-none text-[#334b35] text-base px-6 hover:bg-[#134a51]"
+                  
+                  className="btn bg-[#f1cf69] border-none text-[#334b35] text-base px-6"
                 >
                   {slide.btnText}
                 </Link>

@@ -8,8 +8,8 @@ import Loading from '../Pages/Loading';
 const MainLayout = () => {
     const navigation = useNavigation()
     return (
-        <div>
-            <header>
+        <div className='relative'>
+            <header className='sticky top-0 z-50'>
                 <Navbar></Navbar>
             </header>
             <section>

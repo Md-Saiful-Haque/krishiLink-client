@@ -18,7 +18,7 @@ const MyPost = () => {
             fetch(`https://krishi-link-server-iota.vercel.app/crop?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
-                    setMyCrops(data)
+                    setMyCrops(data.result)
                 })
         }
     }, [user.email])

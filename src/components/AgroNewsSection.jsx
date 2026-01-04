@@ -31,10 +31,10 @@ const newsData = [
 const AgroNewsSection = () => {
   return (
     <section className="py-16 bg-green-50" id="agro-news">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-[1200px] mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#334b35]">
+          <h2 className="font-bold text-3xl text-[#334b35]">
             Agro News & Blogs
           </h2>
           <p className="text-gray-600 mt-2">

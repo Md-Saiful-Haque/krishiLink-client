@@ -17,6 +17,10 @@ const CropsCard = ({ crop }) => {
                 <h2 className='font-semibold'>Quantity : <span className='font-medium'>{crop.quantity} kg</span></h2>
                 <h2 className='font-semibold'><span className='text-[#a4b7a6] font-medium'>{crop.type}</span></h2>
             </div>
+            <div className='mt-2'>
+                <h2 className='font-medium'>Location: {crop.location}</h2>
+                <p>{crop.description}</p>
+            </div>
 
             <div className='mt-3'>
                 <Link to={`/details/${crop._id}`}><button className='btn bg-[#f1cf69] text-[#334b35] w-full font-semibold'>View Details</button></Link>

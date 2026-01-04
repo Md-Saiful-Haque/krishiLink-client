@@ -38,7 +38,7 @@ const AddCrops = () => {
             .then(data => {
                 console.log(data)
                 toast.success('Crop added successfully!')
-                navigate('/my-post')
+                navigate('/dashboard/my-post')
             })
             .catch(error => {
                 console.log(error)
@@ -46,7 +46,7 @@ const AddCrops = () => {
     }
 
     return (
-        <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-10">
+        <div className="card border border-gray-200 bg-base-100 w-full max-w-xl mx-auto shadow-2xl rounded-2xl mt-10 mb-10">
             <title>krishiLink-Add-Crop</title>
             <div className="card-body p-6 relative">
                 <h2 className="text-2xl font-bold text-[#334b35] text-center mb-6">Add New Crop</h2>

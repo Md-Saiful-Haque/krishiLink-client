@@ -8,7 +8,7 @@ import Loading from './Loading';
 
 const CropDetails = () => {
     const { id: cropId } = useParams()
-    //const { data } = useLoaderData()
+    
     const [crop, setCrop] = useState({})
     const [interest, setInterest] = useState([])
     const modalRef = useRef()

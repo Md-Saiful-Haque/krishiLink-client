@@ -12,6 +12,10 @@ import Profile from "../Pages/Profile";
 import CropDetails from "../Pages/CropDetails";
 import MyInterests from "../Pages/MyInterests";
 import About from "../Pages/About";
+import Privacy from "../Pages/Privacy";
+import Blog from "../Pages/Blog";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import DashboardOverview from "../Pages/DashboardOverview";
 
 
 export const router = createBrowserRouter([
@@ -36,25 +40,7 @@ export const router = createBrowserRouter([
             {
                 path: '/all-crops',
                 element: <AllCrops />,
-                loader: () => fetch('https://krishi-link-server-iota.vercel.app/crop')
-            },
-            {
-                path: '/addCrop',
-                element: <PrivateRoute>
-                    <AddCrops />
-                </PrivateRoute>
-            },
-            {
-                path: '/my-post',
-                element: <PrivateRoute>
-                    <MyPost></MyPost>
-                </PrivateRoute>
-            },
-            {
-                path: '/profile',
-                element: <PrivateRoute>
-                    <Profile></Profile>
-                </PrivateRoute>
+                //loader: () => fetch('https://krishi-link-server-iota.vercel.app/crop')
             },
             {
                 path: '/update/:id',
@@ -68,16 +54,45 @@ export const router = createBrowserRouter([
                 loader: () => fetch('https://krishi-link-server-iota.vercel.app/crop')
             },
             {
-                path: '/my-interests',
-                element: <PrivateRoute>
-                    <MyInterests />
-                </PrivateRoute>
+                path: '/about',
+                Component: About
             },
             {
-                path: '/about',
-                Component: About 
+                path: '/privacy',
+                Component: Privacy
+            },
+            {
+                path: '/blog',
+                Component: Blog
             }
         ]
     },
-    
+    {
+        path: 'dashboard',
+        element: <PrivateRoute>
+            <DashboardLayout />
+        </PrivateRoute>,
+        children: [
+            { index: true, 
+                element: <DashboardOverview /> 
+            },
+            {
+                path: 'addCrop',
+                element: <AddCrops />
+            },
+            {
+                path: 'my-post',
+                element: <MyPost></MyPost>
+            },
+            {
+                path: 'my-interests',
+                element: <MyInterests />
+            },
+            {
+                path: 'profile',
+                element: <Profile></Profile>
+            }
+        ]
+    }
+
 ])

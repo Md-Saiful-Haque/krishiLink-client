@@ -11,7 +11,7 @@ const About = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             About KrishiLink
           </h1>
-          <p className="text-lg text-gray-200 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-200 font-medium max-w-3xl mx-auto">
             Connecting farmers and buyers directly to ensure fair pricing,
             transparency, and sustainable agriculture.
           </p>
@@ -23,9 +23,9 @@ const About = () => {
         {/* Mission */}
         <section>
           <h2 className="text-2xl font-semibold text-[#334b35] mb-3">
-            🌱 Our Mission
+             Our Mission
           </h2>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-gray-700 font-medium leading-relaxed">
             KrishiLink aims to bridge the gap between farmers and buyers by
             providing a transparent digital platform where agricultural
             products can be listed, discovered, and traded without unnecessary
@@ -37,9 +37,9 @@ const About = () => {
         {/* Vision */}
         <section>
           <h2 className="text-2xl font-semibold text-[#334b35] mb-3">
-            🌾 Our Vision
+           Our Vision
           </h2>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-gray-700 font-medium leading-relaxed">
             We envision a future where technology plays a key role in
             strengthening rural economies, promoting sustainable farming
             practices, and creating trust-based relationships between producers
@@ -50,9 +50,9 @@ const About = () => {
         {/* Why KrishiLink */}
         <section>
           <h2 className="text-2xl font-semibold text-[#334b35] mb-4">
-            🤝 Why Choose KrishiLink?
+            Why Choose KrishiLink?
           </h2>
-          <ul className="list-disc pl-6 space-y-2 text-gray-700">
+          <ul className="list-disc pl-6 space-y-2 font-medium text-gray-700">
             <li>Direct connection between farmers and buyers</li>
             <li>Transparent pricing with no hidden charges</li>
             <li>Easy interest-based buying system</li>
@@ -64,9 +64,9 @@ const About = () => {
         {/* Platform Overview */}
         <section>
           <h2 className="text-2xl font-semibold text-[#334b35] mb-3">
-            🚜 Platform Overview
+           Platform Overview
           </h2>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-gray-700 font-medium leading-relaxed">
             KrishiLink allows farmers to list crops with detailed information
             such as price, quantity, location, and availability. Buyers can
             browse listings, express interest, and communicate directly with

@@ -43,11 +43,9 @@ const Footer = () => {
                 </div>
                 <div className='flex flex-col list-none mr-70 md:mr-0 mb-3 md:mb-0 gap-4 mt-4 md:mt-0'>
                     <h2 className='text-2xl text-white font-semibold'>Explore</h2>
-                    <li><Link className='text-[#b3c5b5]'>New Projects</Link></li>
-                    <li><Link className='text-[#b3c5b5]'>Our services</Link></li>
+                    <li><Link to={'/privacy'} className='text-[#b3c5b5]'>Privacy & Terms</Link></li>
+                    <li><Link to={'/blog'} className='text-[#b3c5b5]'>Blog</Link></li>
                     <li><Link to={'/about'} className='text-[#b3c5b5]'>About Us</Link></li>
-                    <li><Link className='text-[#b3c5b5]'>Get In Touch</Link></li>
-                    <li><Link className='text-[#b3c5b5]'>Farmers</Link></li>
                 </div>
                 <div>
                     <h2 className='text-2xl text-white font-semibold'>Newletter</h2>
@@ -66,10 +64,10 @@ const Footer = () => {
                 <div className='max-w-[1200px] mx-auto flex justify-between items-center mt-10'>
                     <p className='text-[#ffffff] mt-8 font-semibold mb-8 p-0.5 md:p-0'>© Copyright 2025 by Krishi</p>
                     <div className='flex items-center gap-8 text-white p-2 md:p-0'>
-                        <FaSquareXTwitter />
-                        <FaFacebookSquare />
-                        <FaInstagramSquare />
-                        <IoLogoYoutube />
+                        <Link to={'https://x.com/'}><FaSquareXTwitter /></Link>
+                        <Link to={'https://www.facebook.com/'}><FaFacebookSquare /></Link>
+                        <Link to={'https://www.youtube.com/'}><FaInstagramSquare /></Link>
+                        <Link to={'https://www.instagram.com/'}><IoLogoYoutube /></Link>
                     </div>
                 </div>
             </div>
